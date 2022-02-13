@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- hero section starts
-                                                                                                                                                                        ================================================== -->
+                                                                                                                                                                                            ================================================== -->
     <section id="home" class="dtr-section">
         <div class="dtr-section bg-white dtr-hero-section-top-padding">
             <div class="container dtr-pb-100">
@@ -44,11 +44,11 @@
         </div>
     </section>
     <!-- hero section ends
-                                                                                                                                                                        ================================================== -->
+                                                                                                                                                                                            ================================================== -->
 
 
     <!-- services section starts
-                                                                                                                                                                        ================================================== -->
+                                                                                                                                                                                            ================================================== -->
     <section id="services" class="dtr-section dtr-pt-100 dtr-pb-70 bg-white">
         <div class="container">
 
@@ -70,15 +70,12 @@
                 @foreach ($services as $service)
                     <!-- column 1 starts -->
                     <div class="col-12 col-md-4">
-                        <a href="#" style="color: black;">
+                        <a href=" {{ url('print/' . $service->id) }} " style="color: black;">
                             <div class="dtr-servicebox-wrapper dtr-servicebox-offset-border dtr-box-rounded">
                                 <div class="dtr-servicebox dtr-shadow bg-light-orange"> <span
                                         class="dtr-servicebox-number">{{ $service->position }}</span>
                                     <div class="dtr-servicebox-head">
-                                        <div class="dtr-servicebox-icon color-orange"> <i
-                                                class="icon-user-circle-plus-fill"></i>
-                                        </div>
-                                        <h4 class="dtr-servicebox-heading">{{ $service->libelle }}</h4>
+                                        <h3 class="dtr-servicebox-heading">{{ $service->libelle }}</h3>
                                     </div>
                                     <div class="dtr-servicebox-content">{{ $service->description }}</div>
                                 </div>
@@ -98,10 +95,10 @@
         </div>
     </section>
     <!-- services section ends
-                                                                                                                                                                        ================================================== -->
+                                                                                                                                                                                            ================================================== -->
 
     <!-- contact section starts
-                                                                                                                                                                        ================================================== -->
+                                                                                                                                                                                            ================================================== -->
     <section id="contact" class="dtr-section dtr-py-100">
         <div class="container">
 
@@ -162,5 +159,5 @@
         </div>
     </section>
     <!-- contact section ends
-                                                                                                                                                                        ================================================== -->
+                                                                                                                                                                                            ================================================== -->
 @endsection

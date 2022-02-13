@@ -26,6 +26,7 @@ class TicketController extends Controller
         $ticket = new Ticket();
 
         $nbre_ticket = Ticket::where('created_at', date('Y-m-d'))->count();
+        $service->load(['structure']);
 
         if ($nbre_ticket == 0) {
             $ticket->numero = 1;
@@ -38,10 +39,12 @@ class TicketController extends Controller
         }
 
         $ticket->status = STATUT_PRINT;
+        $ticket->service_id = $service->id;
+        $ticket->structure_id = $service->structure_id;
 
         $ticket->save();
 
-        return redirect('printer/' . $ticket);
+        return redirect('printer/' . $ticket->id);
     }
 
     public function agent()

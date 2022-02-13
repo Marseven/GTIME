@@ -40,7 +40,8 @@ class ExportController extends Controller
     {
         $ticket->load(['structure', 'service']);
         $date = new \DateTime();
-        $qrcode = QrCode::size(200)->generate(url('view/' . $ticket));
+        $url = url('view/' . $ticket->id);
+        $qrcode = QrCode::encoding("UTF-8")->format('png')->size(200)->generate($url, public_path('images/qrcode.png'));
 
         $data = [
             'ticket' => $ticket,
@@ -48,7 +49,7 @@ class ExportController extends Controller
             'date' => $date->format('d-m-Y'),
         ];
 
-        $pdf = PDF::loadView('ticket.ticket-pdf', $data)->setPaper('a5', 'portrait');
+        $pdf = PDF::loadView('tickets.ticket-pdf', $data)->setPaper('a5', 'portrait');
 
         return $pdf->download('Ticket-' . $ticket->id . '.pdf');
     }

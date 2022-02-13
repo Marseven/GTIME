@@ -21,7 +21,8 @@
     <!--end::Page Vendors Styles-->
 
     <!-- FAVICON FILES -->
-    <link href="{{ asset('front/img/ico-gt.jpg') }}" rel="apple-touch-icon" sizes="144x144">
+    <link rel="shortcut icon" href="{{ asset('images/logo/ico-gt.jpg') }}" type="image/x-icon">
+
     <!-- CSS FILES -->
     <link rel="stylesheet" href="{{ asset('front/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('front/css/iconfont.css') }}">

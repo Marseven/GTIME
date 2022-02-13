@@ -42,7 +42,7 @@
                                         <img src="{{ asset('images/samples/2.png') }}" class="d-block w-100" alt="...">
                                         <div class="carousel-caption d-none d-md-block" style="bottom: 5.5rem;">
                                             <h1 style="color:white; font-size : 15em">
-                                                {{ $$service['service']->libelle[0] }}{{ $service['last_ticket'] == null ? '-' : $service['last_ticket']->numero }}
+                                                {{ $service['service']->libelle[0] }}{{ $service['last_ticket'] == null ? '-' : $service['last_ticket']->numero }}
                                             </h1>
                                             @if ($last_ticket != null)
                                                 <p><span

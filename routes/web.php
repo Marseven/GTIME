@@ -43,9 +43,9 @@ Route::get('/rating/{ticket}', [NoteController::class, 'index'])->name('rating')
 Route::post('/rating/{ticket}', [NoteController::class, 'add'])->name('rating');
 
 //form contact classic
-Route::get('/print/{ticket}', [TicketController::class, 'print'])->name('ticket');
-Route::post('/printer/{ticket}', [ExportController::class, 'generate'])->name('generate');
-Route::post('/view/{ticket}', [TicketController::class, 'index'])->name('ticket');
+Route::get('/print/{service}', [TicketController::class, 'print'])->name('ticket');
+Route::get('/printer/{ticket}', [ExportController::class, 'generate'])->name('generate');
+Route::get('/view/{ticket}', [TicketController::class, 'index'])->name('ticket');
 
 Auth::routes();
 

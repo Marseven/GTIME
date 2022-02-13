@@ -19,7 +19,7 @@ class CreateTickets extends Migration
             $table->string('nbre_ticket_avant');
             $table->string('status');
             $table->foreignId('service_id');
-            $table->foreignId('struture_id');
+            $table->foreignId('structure_id');
             $table->foreignId('user_id')->nullable();
             $table->timestamps();
         });

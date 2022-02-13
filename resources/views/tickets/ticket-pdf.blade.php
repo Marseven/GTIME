@@ -1,52 +1,43 @@
 <html>
 
 <head>
-    <style type="text/css">
-        body {
-            font-family: Arial;
-            font-size: 65.4px
-        }
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
 
-        .pos {
-            position: absolute;
-            z-index: 0;
-            left: 0px;
-            top: 0px
+    <style>
+        body,
+        p,
+        h1,
+        h2 {
+            font-family: Arial, Helvetica, sans-serif;
         }
 
     </style>
 </head>
 
-<body>
-    <div class="pos" id="_166:113" style="top:113;left:166">
-        <span id="_42.5" style="font-weight:bold; font-family:Arial; font-size:42.5px; color:#000000">
-            {{ $ticket->structure->libelle }}</span>
-    </div>
-    <div class="pos" id="_198:186" style="top:186;left:198">
-        <span id="_22.8" style=" font-family:Arial; font-size:22.8px; color:#000000">
-            {{ $ticket->structure->telephone }} - {{ $ticket->structure->email }}</span>
-    </div>
-    <div class="pos" id="_198:275" style="top:275;left:198">
-        <span id="_163.3" style=" font-family:Arial; font-size:163.3px; color:#000000">
-            C {{ $ticket->numero }}</span>
-    </div>
-    <div class="pos" id="_207:422" style="top:422;left:207">
-        <span id="_12.7" style="font-style:italic; font-family:Arial; font-size:12.7px; color:#000000">
-            Nombre de ticket avant : {{ $ticket->nbre_ticket_avant }}</span>
-    </div>
-    <div class="pos" id="_272:482" style="top:482;left:272">
-        <span id="_19.1" style="font-weight:bold; font-family:Arial; font-size:19.1px; color:#000000">
-            {{ $ticket->service->libelle }}</span>
-    </div>
+<body style="padding : 7pt 50pt 7pt 50pt">
 
-    <div class="pos" id="_272:482" style="top:482;left:272">
-        {{ $qrcode }}
+    <div style="text-align: center;">
+        <h1><span>{{ $ticket->structure->libelle }}</span>
+        </h1>
+        <p><span>Email : {{ $ticket->structure->email }}</span>
+        </p>
+        <p><span>Téléphone : {{ $ticket->structure->telephone }}</span></p>
     </div>
-
-    <div class="pos" id="_288:765" style="top:765;left:288">
-        <span id="_19.1" style="font-weight:bold; font-family:Arial; font-size:19.1px; color:#000000">
-            {{ $ticket->created_at }}</span>
+    <div style="border-top: 2px solid black; border-bottom: 2px solid black; heigth : 200px;">
+        <h1 style="font-weight: 800; font-size: 3em; text-align: center;  font-family: Arial, Helvetica, sans-serif;">
+            {{ $ticket->service->libelle[0] }}{{ $ticket->numero }}</h1>
     </div>
+    <p style="text-align: center;"><span style="font-weight: 700;">Service :</span> {{ $ticket->service->libelle }}
+        <br>
+        <span style="font-weight: 700;">Nombre de tickets avant : </span> {{ $ticket->nbre_ticket_avant }}
+    </p>
+    <p style="font-weight: 700; font-size: 1.2em; text-align: center;"><span>Scanner le QR Code</span>
+    </p>
+    <p style="text-align: center;">
+        <img alt="" src="{{ asset('images/qrcode.png') }}" style="width: 200px; height: 200px;" title="qrcode">
+    </p>
+    <p style="text-align: center;"><span style="font-weight: 700">Date : </span> <span
+            style=" font-style: italic;">{{ $ticket->created_at }}</span> </p>
 
 </body>
 
