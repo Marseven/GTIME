@@ -27,7 +27,6 @@ class WelcomeController extends Controller
 
     public function contact(Request $request)
     {
-
         try {
             $result =  Mail::to('gnoumbar7@icloud.com')->cc("mebodoaristide@gmail.com")->queue(new QueryMessage($request->all()));
         } 
