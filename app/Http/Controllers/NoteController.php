@@ -60,7 +60,7 @@ class NoteController extends Controller
 
     public function thanks(){
         return view(
-            'notes.thanks',
+            'notes.thanks'
         );
     }
 }
