@@ -68,13 +68,13 @@
                                                             <td>{{ $role->name }}</td>
                                                             <td>{{ $role->object ? $role->object->name : 'NULL' }}</td>
                                                             <td>
-                                                                <button type="button" class="btn btn-primary"
+                                                                <button type="button" class="btn btn-info"
                                                                     data-bs-toggle="modal"
                                                                     data-bs-target="#cardModalView{{ $role->id }}">Voir</button>
-                                                                <button type="button" class="btn btn-primary"
+                                                                <button type="button" class="btn btn-warning"
                                                                     data-bs-toggle="modal"
                                                                     data-bs-target="#cardModal{{ $role->id }}">Modifer</button>
-                                                                <button type="button" class="btn btn-primary"
+                                                                <button type="button" class="btn btn-danger"
                                                                     data-bs-toggle="modal"
                                                                     data-bs-target="#cardModalCenter{{ $role->id }}">
                                                                     Supprimer
@@ -141,7 +141,7 @@
     </div>
 
     @foreach ($roles as $role)
-        <div class="modal fade text-left" id="inlineForm{{ $role->id }}" tabindex="-1" role="dialog"
+        <div class="modal fade text-left" id="cardModalView{{ $role->id }}" tabindex="-1" role="dialog"
             aria-labelledby="myModalLabel33" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
                 <div class="modal-content">
@@ -157,10 +157,10 @@
                                 <thead class="table-light">
                                     <tr>
                                         <th class="w-75">Permissions du rôle</th>
-                                        <th><i data-feather="eye" class="icon-sm me-2"></i></th>
-                                        <th><i data-feather="plus" class="icon-sm me-2"></i></th>
-                                        <th><i data-feather="edit" class="icon-sm me-2"></i></th>
-                                        <th><i data-feather="trash-2" class="icon-sm me-2"></i></th>
+                                        <th><i class="bi bi-eye"></i></th>
+                                        <th><i class="bi bi-plus"></i></th>
+                                        <th><i class="bi bi-pencil-square"></i></th>
+                                        <th><i class="bi bi-trash"></i></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -221,14 +221,13 @@
                             <span class="d-none d-sm-block">Enregistrer</span>
                         </button>
                     </div>
-                    </form>
                 </div>
             </div>
         </div>
     @endforeach
 
     @foreach ($roles as $role)
-        <div class="modal fade" id="cardModalView{{ $role->id }}" tabindex="-1" role="dialog"
+        <div class="modal fade" id="cardModal{{ $role->id }}" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-centered modal-dialog-scrollable" role="document">
                 <div class="modal-content">
@@ -238,18 +237,19 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
-                        <form action="{{ url('admin/security-permission/edit/' . $role->id) }}" method="POST">
-                            @csrf
+                    <form action="{{ url('admin/security-permission/edit/' . $role->id) }}" method="POST">
+                        @csrf
+                        <div class="modal-body">
+
                             <div class="table-responsive mb-3">
                                 <table class="table text-nowrap">
                                     <thead class="table-light">
                                         <tr>
                                             <th class="w-75">Permissions du rôle</th>
-                                            <th><i data-feather="eye" class="icon-sm me-2"></i></th>
-                                            <th><i data-feather="plus" class="icon-sm me-2"></i></th>
-                                            <th><i data-feather="edit" class="icon-sm me-2"></i></th>
-                                            <th><i data-feather="trash-2" class="icon-sm me-2"></i></th>
+                                            <th><i class="bi bi-eye"></i></th>
+                                            <th><i class="bi bi-plus"></i></th>
+                                            <th><i class="bi bi-pencil-square"></i></th>
+                                            <th><i class="bi bi-trash"></i></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -295,18 +295,19 @@
                                     </tbody>
                                 </table>
                             </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-light-secondary" data-bs-dismiss="modal">
-                            <i class="bx bx-x d-block d-sm-none"></i>
-                            <span class="d-none d-sm-block">Fermé</span>
-                        </button>
-                        <button type="submit" class="btn btn-primary ml-1" data-bs-dismiss="modal">
-                            <i class="bx bx-check d-block d-sm-none"></i>
-                            <span class="d-none d-sm-block">Enregistrer</span>
-                        </button>
-                        </form>
-                    </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-light-secondary" data-bs-dismiss="modal">
+                                <i class="bx bx-x d-block d-sm-none"></i>
+                                <span class="d-none d-sm-block">Fermé</span>
+                            </button>
+                            <button type="submit" class="btn btn-primary ml-1">
+                                <i class="bx bx-check d-block d-sm-none"></i>
+                                <span class="d-none d-sm-block">Enregistrer</span>
+                            </button>
+
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -337,9 +338,9 @@
                         <form method="POST" action="{{ url('admin/security-role/delete/' . $role->id) }}">
                             @csrf
                             <input type="hidden" name="delete" value="true">
-                            <button type="submit" class="btn btn-danger ml-1" data-bs-dismiss="modal">
+                            <button type="submit" class="btn btn-danger ml-1">
                                 <i class="bi bi-trash d-block d-sm-none"></i>
-                                <span class="d-none d-sm-block">Enregistrer</span>
+                                <span class="d-none d-sm-block">Valider</span>
                             </button>
                         </form>
                     </div>

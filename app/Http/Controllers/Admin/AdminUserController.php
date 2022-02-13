@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\FileController;
 use App\Models\SecurityRole;
+use App\Models\Struture;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -29,6 +30,7 @@ class AdminUserController extends Controller
     {
         $users = User::all();
         $roles = SecurityRole::all();
+        $structures = Struture::all();
         $user->load(
             ['SecurityRole']
         );
@@ -36,6 +38,7 @@ class AdminUserController extends Controller
         return view('admin.users.list', [
             'users' => $users,
             'roles' => $roles,
+            'structures' => $structures,
         ]);
     }
 
@@ -75,6 +78,10 @@ class AdminUserController extends Controller
             $user->picture = $picture['url'];
         }
 
+        if ($request->structure_id != "null") {
+            $user->structure_id = $request->structure_id;
+        }
+
         $user->save();
 
         return redirect('admin/list-users');
@@ -103,6 +110,11 @@ class AdminUserController extends Controller
             }
 
             $user->picture = $picture['url'];
+
+            if ($request->structure_id != "null") {
+                $user->structure_id = $request->structure_id;
+            }
+
 
             $user->save();
             return redirect('/admin-profil');

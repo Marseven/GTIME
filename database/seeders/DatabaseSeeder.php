@@ -58,32 +58,33 @@ class DatabaseSeeder extends Seeder
         ]);
 
         SecurityPermission::create([
-            'name' => 'Cards',
+            'name' => 'Tickets',
             'description' => "Tickets",
             'user_id' => 1,
         ]);
 
         SecurityPermission::create([
-            'name' => 'RequestCards',
+            'name' => 'Notes',
             'description' => "Notes",
             'user_id' => 1,
         ]);
 
         SecurityPermission::create([
-            'name' => 'Queries',
+            'name' => 'Services',
             'description' => "Services",
             'user_id' => 1,
         ]);
 
         SecurityPermission::create([
-            'name' => 'Payments',
+            'name' => 'Structures',
             'description' => "Structures",
             'user_id' => 1,
         ]);
 
         User::create([
             'name' => 'SuperAdmin',
-            'email' => 'superadmin@digitech-africa.com',
+            'email' => 'superadmin@gtime.com',
+            'phone' => '074010203',
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
@@ -91,8 +92,9 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::create([
-            'name' => 'Digitech 01',
-            'email' => 'digitech01@digitech-africa.com',
+            'name' => 'GTIME 01',
+            'email' => 'admin01@gtime.com',
+            'phone' => '074010203',
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
@@ -100,8 +102,9 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::create([
-            'name' => 'Digitech 02',
-            'email' => 'digitech02@digitech-africa.com',
+            'name' => 'GTIME 02',
+            'email' => 'admin02@gtime.com',
+            'phone' => '074010203',
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),

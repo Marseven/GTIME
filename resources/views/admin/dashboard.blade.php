@@ -28,7 +28,7 @@
                                     </div>
                                     <div class="col-md-8">
                                         <h6 class="text-muted font-semibold">Tickets Imprimés</h6>
-                                        <h6 class="font-extrabold mb-0">112 000</h6>
+                                        <h6 class="font-extrabold mb-0">{{ $tickets }}</h6>
                                     </div>
                                 </div>
                             </div>
@@ -45,29 +45,31 @@
                                     </div>
                                     <div class="col-md-8">
                                         <h6 class="text-muted font-semibold">Notes</h6>
-                                        <h6 class="font-extrabold mb-0">105 000</h6>
+                                        <h6 class="font-extrabold mb-0">{{ $notes }}</h6>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-6 col-lg-3 col-md-6">
-                        <div class="card">
-                            <div class="card-body px-3 py-4-5">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="stats-icon green">
-                                            <i class="icon dripicons-store"></i>
+                    @if (Auth::user()->security_role_id == 1)
+                        <div class="col-6 col-lg-3 col-md-6">
+                            <div class="card">
+                                <div class="card-body px-3 py-4-5">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="stats-icon green">
+                                                <i class="icon dripicons-store"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <h6 class="text-muted font-semibold">Structures</h6>
+                                            <h6 class="font-extrabold mb-0">{{ $structures }}</h6>
                                         </div>
                                     </div>
-                                    <div class="col-md-8">
-                                        <h6 class="text-muted font-semibold">Structures</h6>
-                                        <h6 class="font-extrabold mb-0">145</h6>
-                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    @endif
                     <div class="col-6 col-lg-3 col-md-6">
                         <div class="card">
                             <div class="card-body px-3 py-4-5">
@@ -79,7 +81,7 @@
                                     </div>
                                     <div class="col-md-8">
                                         <h6 class="text-muted font-semibold">Services</h6>
-                                        <h6 class="font-extrabold mb-0">112</h6>
+                                        <h6 class="font-extrabold mb-0">{{ $services }}</h6>
                                     </div>
                                 </div>
                             </div>

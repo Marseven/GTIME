@@ -105,12 +105,15 @@
                                                             <td>{{ $user->SecurityRole ? $user->SecurityRole->name : 'Client' }}
                                                             </td>
                                                             <td>
-                                                                <button type="button" class="btn btn-primary"
+                                                                <button type="button" class="btn btn-info"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#cardModalView{{ $user->id }}"><i
+                                                                        class="bi bi-eye"></i></button>
+                                                                <button type="button" class="btn btn-warning"
                                                                     data-bs-toggle="modal"
                                                                     data-bs-target="#cardModal{{ $user->id }}"><i
-                                                                        data-feather="edit"
-                                                                        class="icon-sm me-2"></i></button>
-                                                                <button type="button" class="btn btn-primary"
+                                                                        class="bi bi-pencil-square"></i></button>
+                                                                <button type="button" class="btn btn-danger"
                                                                     data-bs-toggle="modal"
                                                                     data-bs-target="#cardModalCenter{{ $user->id }}">
                                                                     Supprimer
@@ -143,18 +146,18 @@
                         <i data-feather="x"></i>
                     </button>
                 </div>
-                <form action="{{ url('admin-create') }}" method="POST">
+                <form action="{{ url('admin-create') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
                         <div class="row align-items-center mb-8">
                             <div class="col-md-3 mb-3 mb-md-0">
-                                <h5 class="mb-0">Photo de profil</h5>
+                                <label class="mb-0">Photo de profil</label>
                             </div>
                             <div class="col-md-9">
                                 <div class="d-flex align-items-center">
                                     <div class="me-3">
-                                        <img src="{{ asset('media/users/blank.png') }}"
-                                            class="rounded-circle avatar avatar-lg" alt="">
+                                        <img style="height: auto;width: 5em;margin: 10px;"
+                                            src="{{ asset('images/faces/2.jpg') }}" alt="">
                                     </div>
                                     <div>
                                         <input type="file" class="btn btn-outline-white me-1" />
@@ -162,18 +165,11 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="mb-6">
-                            <h4 class="mb-1">Informations</h4>
-
-                        </div>
-
                         <!-- row -->
 
                         <div class="mb-3 row">
-                            <label for="fullName" class="col-sm-4 col-form-label
-              form-label">Nom
-                                complet</label>
-                            <div class="col-sm-4 mb-3 mb-lg-0">
+                            <label for="fullName" class="col-sm-4 col-form-label form-label">Nom complet</label>
+                            <div class="col-md-8 col-12">
                                 <input name="name" ype="text" class="form-control" placeholder="First name" id="name"
                                     required>
                             </div>
@@ -210,6 +206,19 @@
                                 </select>
                             </div>
                         </div>
+
+                        <div class="mb-3 row">
+                            <label for="email" class="col-sm-4 col-form-label
+                form-label">Rôle</label>
+                            <div class="col-md-8 col-12">
+                                <select id="selectOne" class="form-control" name="structure_id">
+                                    <option value="null">--</option>
+                                    @foreach ($structures as $structure)
+                                        <option value="{{ $structure->id }}">{{ $structure->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-light-secondary" data-bs-dismiss="modal">
@@ -227,7 +236,7 @@
     </div>
 
     @foreach ($users as $user)
-        <div class="modal fade text-left" id="inlineForm{{ $user->id }}" tabindex="-1" role="dialog"
+        <div class="modal fade text-left" id="cardModal{{ $user->id }}" tabindex="-1" role="dialog"
             aria-labelledby="myModalLabel33" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
                 <div class="modal-content">
@@ -237,60 +246,63 @@
                             <i data-feather="x"></i>
                         </button>
                     </div>
-                    <form action="{{ url('admin/users/' . $user->id) }}" method="POST">
+                    <form action="{{ url('admin/users/' . $user->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="modal-body">
                             <div class="row align-items-center mb-8">
                                 <div class="col-md-3 mb-3 mb-md-0">
-                                    <h5 class="mb-0">Photo de profil</h5>
+                                    <label class="mb-0">Photo de profil</label>
                                 </div>
                                 <div class="col-md-9">
                                     <div class="d-flex align-items-center">
                                         <div class="me-3">
-                                            <img src="{{ asset('media/users/blank.png') }}"
-                                                class="rounded-circle avatar avatar-lg" alt="">
+                                            <img src="{{ $user->picture ? $user->picture : asset('images/faces/2.jpg') }}"
+                                                style="height: auto;width: 5em;margin: 10px;" alt="">
                                         </div>
                                         <div>
-                                            <input type="file" class="btn btn-outline-white me-1" />
+                                            <input value="{{ $user->picture }}" name="picture" type="file"
+                                                class="btn btn-outline-white me-1" />
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="mb-6">
-                                <h4 class="mb-1">Informations</h4>
-
-                            </div>
-
-                            <!-- row -->
 
                             <div class="mb-3 row">
-                                <label for="fullName" class="col-sm-4 col-form-label
-                  form-label">Nom
-                                    complet</label>
-                                <div class="col-sm-4 mb-3 mb-lg-0">
-                                    <input name="name" ype="text" class="form-control" placeholder="First name" id="name"
-                                        required>
+                                <label for="fullName" class="col-sm-4 col-form-label form-label">Nom complet</label>
+                                <div class="col-md-8 col-12">
+                                    <input name="name" type="text" class="form-control" placeholder="Nom Complet"
+                                        id="name" value="{{ $user->name }}" required>
                                 </div>
                             </div>
 
                             <!-- row -->
                             <div class="mb-3 row">
-                                <label for="email"
-                                    class="col-sm-4 col-form-label
-                  form-label">Email</label>
+                                <label for="email" class="col-sm-4 col-form-label form-label">Email</label>
                                 <div class="col-md-8 col-12">
-                                    <input type="email" class="form-control" name="email" placeholder="Email" id="email"
-                                        required>
+                                    <input type="email" value="{{ $user->email }}" class="form-control" name="email"
+                                        placeholder="Email" id="email" required>
+                                </div>
+                            </div>
+
+                            <div class="mb-3 row">
+                                <label for="email" class="col-sm-4 col-form-label form-label">Téléphone</label>
+                                <div class="col-md-8 col-12">
+                                    <input type="tel" value="{{ $user->phone }}" class="form-control" name="phone"
+                                        placeholder="Téléphone" id="phone" required>
                                 </div>
                             </div>
 
                             <div class="mb-3 row">
                                 <label for="email"
                                     class="col-sm-4 col-form-label
-                  form-label">Téléphone</label>
+                    form-label">Rôle</label>
                                 <div class="col-md-8 col-12">
-                                    <input type="tel" class="form-control" name="phone" placeholder="Téléphone"
-                                        id="phone" required>
+                                    <select id="selectOne" class="form-control" name="structure_id">
+                                        <option value="null">--</option>
+                                        @foreach ($structures as $structure)
+                                            <option value="{{ $structure->id }}">{{ $structure->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
 
@@ -339,30 +351,45 @@
                         <div class="row">
                             <div class="col-12 mb-5">
                                 <!-- text -->
-                                <h6 class="text-uppercase fs-5 ls-2">Agent</h6>
+                                <h6 class="text-uppercase text-center fs-5 ls-2">Agent</h6>
+                            </div>
+                            <div class="col-12 mb-5" style="text-align: center">
+                                <img src="{{ $user->picture ? $user->picture : asset('images/faces/2.jpg') }}"
+                                    style="height: auto;width: 7em;" alt="">
                             </div>
                             <div class="col-6 mb-5">
                                 <h6 class="text-uppercase fs-5 ls-2">Nom </h6>
-                                <p class="mb-0">{{ $user->libelle }}</p>
+                                <p class="mb-0">{{ $user->name }}</p>
                             </div>
                             <div class="col-6 mb-5">
-                                <h6 class="text-uppercase fs-5 ls-2">Description </h6>
-                                <p class="mb-0">{{ $user->description }}</p>
-                            </div>
-                            <div class="col-6 mb-5">
-                                <h6 class="text-uppercase fs-5 ls-2">Reponsable </h6>
-                                <p class="mb-0">{{ $user->responsable }}</p>
-                            </div>
-                            <div class="col-6">
                                 <h6 class="text-uppercase fs-5 ls-2">Email
                                 </h6>
                                 <p class="mb-0">{{ $user->email }}</p>
                             </div>
-                            <div class="col-6">
+                            <div class="col-6 mb-5">
                                 <h6 class="text-uppercase fs-5 ls-2">Téléhone
                                 </h6>
                                 <p class="mb-0">{{ $user->phone }}</p>
                             </div>
+                            <div class="col-6 mb-5">
+                                <h6 class="text-uppercase fs-5 ls-2">Rôle
+                                </h6>
+                                @php
+                                    $user->load(['SecurityRole']);
+                                @endphp
+                                <p class="mb-0">{{ $user->SecurityRole->name }}</p>
+                            </div>
+
+                            @if ($user->structure_id)
+                                <div class="col-6 mb-5">
+                                    <h6 class="text-uppercase fs-5 ls-2">Structure
+                                    </h6>
+                                    @php
+                                        $user->load(['structure']);
+                                    @endphp
+                                    <p class="mb-0">{{ $user->structure->libelle }}</p>
+                                </div>
+                            @endif
                         </div>
                     </div>
                     <div class="modal-footer">

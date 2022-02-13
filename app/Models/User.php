@@ -52,6 +52,11 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Struture::class, 'user_id');
     }
 
+    public function structure()
+    {
+        return $this->belongsTo(User::class, 'structure_id');
+    }
+
     public function services()
     {
         return $this->hasMany(Service::class, 'user_id');

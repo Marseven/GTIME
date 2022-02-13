@@ -144,7 +144,7 @@
                                         <div class="user-img d-flex align-items-center">
                                             <div class="avatar avatar-md">
                                                 <img
-                                                    src="{{ asset($user->picture ? $user->picture : 'images/faces/1.jpg') }}">
+                                                    src="{{ asset($user->picture ? $user->picture : asset('images/faces/2.jpg')) }}">
                                             </div>
                                         </div>
                                     </div>

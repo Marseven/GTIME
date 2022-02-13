@@ -65,7 +65,7 @@
                                                             <td>{{ $permission->name }}</td>
                                                             <td>{{ $permission->description }}</td>
                                                             <td>
-                                                                <button type="button" class="btn btn-primary"
+                                                                <button type="button" class="btn btn-danger"
                                                                     data-bs-toggle="modal"
                                                                     data-bs-target="#cardModalCenter{{ $permission->id }}">
                                                                     Supprimer
@@ -117,7 +117,7 @@
                             <i class="bx bx-x d-block d-sm-none"></i>
                             <span class="d-none d-sm-block">Fermé</span>
                         </button>
-                        <button type="submit" class="btn btn-primary ml-1" data-bs-dismiss="modal">
+                        <button type="submit" class="btn btn-primary ml-1">
                             <i class="bx bx-check d-block d-sm-none"></i>
                             <span class="d-none d-sm-block">Enregistrer</span>
                         </button>
@@ -152,9 +152,9 @@
                         <form method="POST" action="{{ url('admin/security-permission/delete/' . $permission->id) }}">
                             @csrf
                             <input type="hidden" name="delete" value="true">
-                            <button type="submit" class="btn btn-danger ml-1" data-bs-dismiss="modal">
-                                <i class="bi bi-trash d-block d-sm-none"></i>
-                                <span class="d-none d-sm-block">Enregistrer</span>
+                            <button type="submit" class="btn btn-danger ml-1" ">
+                                        <i class="  bi bi-trash d-block d-sm-none"></i>
+                                <span class="d-none d-sm-block">valider</span>
                             </button>
                         </form>
                     </div>
