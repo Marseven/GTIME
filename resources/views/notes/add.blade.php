@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 
 <head>
@@ -8,22 +8,37 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
+
+    <!-- FAVICON FILES -->
+    <link rel="shortcut icon" href="{{ asset('images/logo/ico-gt.jpg') }}" type="image/x-icon">
+
     <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
 
     <link rel="stylesheet" href="{{ asset('vendors/perfect-scrollbar/perfect-scrollbar.css') }}">
     <link rel="stylesheet" href="{{ asset('vendors/bootstrap-icons/bootstrap-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
-    <link rel="stylesheet" href="{{ asset('vendors/rater-js/style.css') }}">
+     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+            crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
+
+    <script src="{{ asset('js/rating.js') }}"></script>
 
 </head>
 
 <body>
     <nav class="navbar navbar-light">
         <div class="container d-block">
-            <a href="{{ route('home') }}"><i class="bi bi-chevron-left"></i></a>
-            <a class="navbar-brand ms-4" href="{{ route('home') }}">
-                <img src="{{ asset('images/logo/logo.png') }}">
+            <a href="{{ url('/'.$ticket->structure_id) }}"><i class="bi bi-chevron-left"></i></a>
+            <a class="navbar-brand ms-4" href="{{ url('/'.$ticket->structure_id) }}">
+                <img style="height: 2em;" src="{{ asset('images/logo/logo.png') }}">
             </a>
         </div>
     </nav>
@@ -34,30 +49,27 @@
             <div class="card-header">
                 <h4 class="card-title">Donnez Votre Avis</h4>
             </div>
-            <form method="POST" action="{{ url('rating/' . $ticket->id) }}">
-                @csrf
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4 class="card-title">Donnez une note !</h4>
-                            </div>
-                            <div class="card-body">
-                                <div id="step"></div>
-                            </div>
-                        </div>
+            <div class="card-body">
+                <form class="form form-vertical" method="POST" action="{{ url('rating/' . $ticket->id) }}">
+                    @csrf
+                    <div class="col-12 col-md-6">
+                        <br>
+                        <label for="starsInput">Donnez une note au service 😃</label>
+                        <div style="font-size: 3em !important;" id="review"></div>
+                        <input type="hidden" name="note" readonly id="starsInput" class="form-control form-control-sm">
                     </div>
-                </div>
-                <div class="form-floating">
-                    <textarea class="form-control" placeholder="Laissez un commentaire"
-                        id="floatingTextarea"></textarea>
-                    <label for="floatingTextarea">Commentaire</label>
-                </div>
-                <div class="col-12 d-flex justify-content-end">
-                    <button type="submit" class="btn btn-primary me-1 mb-1">Soumettre</button>
-                </div>
-            </form>
-
+                    <br>
+                    <div class="form-floating">
+                        <textarea class="form-control" name="commentaire" placeholder="Laissez un commentaire"
+                            id="floatingTextarea" rows="5"></textarea>
+                        <label for="floatingTextarea">Commentaire</label>
+                    </div>
+                    <br>
+                    <div class="col-12 d-flex justify-content-end">
+                        <button type="submit" class="btn btn-success me-1 mb-1">Soumettre</button>
+                    </div>
+                </form>
+            </div>    
         </div>
     </div>
 
@@ -65,12 +77,60 @@
     <script src="{{ asset('vendors/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
 
-    <script src="{{ asset('js/main.js') }}"></script>
-
-    <script src="{{ asset('vendors/rater-js/rater-js.js') }}"></script>
-    <script src="{{ asset('js/extensions/rater-js.js') }}"></script>
+     <script src="{{ asset('js/main.js') }}"></script>
 
 
 </body>
+
+
+<script>
+    $("#review").rating({
+        "value": 3,
+        "click": function (e) {
+            console.log(e);
+            $("#starsInput").val(e.stars);
+        }
+    });
+
+    $("#10starsReview").rating({
+        "stars": 10,
+        "click": function (e) {
+            console.log(e);
+            $("#10starsInput").val(e.stars);
+        }
+    });
+
+    $("#customstarsReview").rating({
+        "emptyStar": "far fa-play-circle",
+        "filledStar": "fas fa-play-circle",
+        "color": "#4c71ff",
+        "click": function (e) {
+            console.log(e);
+            $("#customstarsInput").val(e.stars);
+        }
+    });
+
+    $("#halfstarsReview").rating({
+        "half": true,
+        "click": function (e) {
+            console.log(e);
+            $("#halfstarsInput").val(e.stars);
+        }
+    });
+
+    $("#unrealisticReview").rating({
+        value: 3,
+        stars: 7,
+        emptyStar: "far fa-arrow-alt-circle-left",
+        halfStar: "far fa-angry",
+        filledStar: "fas fa-arrow-alt-circle-right",
+        color: "#ff3ef9",
+        half: true,
+        click: function (e) {
+            console.log(e);
+            $("#unrealisticInput").val(e.stars);
+        }
+    });
+</script>
 
 </html>

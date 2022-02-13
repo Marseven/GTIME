@@ -13,7 +13,7 @@ define('STATUT_PRINT', 0);     // Largeur max de l'image en pixels
 define('STATUT_PENDING', 1);
 define('STATUT_APPROVE', 2);     // Largeur max de l'image en pixels
 define('STATUT_REFUSED', 3);
-define('STATUT_CANCEL', 4);
+define('STATUT_ABSENT', 4);
 define('STATUT_PAID', 5);
 define('STATUT_DO', 6);
 

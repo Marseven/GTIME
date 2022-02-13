@@ -64,6 +64,10 @@
                         <li> <a class="nav-link" href=#home" role="menuitem" tabindex="-1">Accueil</a> </li>
                         <li> <a class="nav-link" href="#services" role="menuitem" tabindex="-1">Services</a> </li>
                         <li> <a class="nav-link" href="#contact" role="menuitem" tabindex="-1">Contact</a> </li>
+                        @if (Auth::user())
+                            <li> <a class="nav-link" href="{{ route('admin') }}/dashboard">Administration</a>
+                            </li>
+                        @endif
                     </ul>
                 </div>
             </div>
@@ -100,7 +104,8 @@
                             <li> <a class="nav-link" href="#services">Services</a> </li>
                             <li> <a class="nav-link" href="#contact">Contact</a> </li>
                             @if (Auth::user())
-                                <li> <a class="nav-link" href="{{ route('admin') }}">Administration</a> </li>
+                                <li> <a class="nav-link"
+                                        href="{{ route('admin') }}/dashboard">Administration</a> </li>
                             @endif
                         </ul>
                     </div>

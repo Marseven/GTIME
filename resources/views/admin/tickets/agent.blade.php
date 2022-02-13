@@ -22,14 +22,11 @@
         </div>
         <section class="section">
             @foreach ($list_service as $service)
-                @php
-                    $status = App\Http\Controllers\Controller::status($service['last_ticket']->status);
-                @endphp
                 <div class="col-lg-6">
                     <div class="card">
                         <div class="card-header">
                             <h4>{{ $service['service']->libelle }}</h4>
-                            <p>{{ $$service['service']->description }}</p>
+                            <p>{{ $service['service']->description }}</p>
                         </div>
                         <div class="card-body">
                             <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carouselfade">
@@ -44,7 +41,10 @@
                                             <h1 style="color:white; font-size : 15em">
                                                 {{ $service['service']->libelle[0] }}{{ $service['last_ticket'] == null ? '-' : $service['last_ticket']->numero }}
                                             </h1>
-                                            @if ($last_ticket != null)
+                                            @if ($service['last_ticket'] != null)
+                                                @php
+                                                    $status = App\Http\Controllers\Controller::status($service['last_ticket']->status);
+                                                @endphp
                                                 <p><span
                                                         class="badge badge-{{ $status['type'] }}">{{ $status['message'] }}</span>
                                                 </p>
@@ -52,10 +52,16 @@
                                         </div>
                                     </div>
                                 </div>
-                                <a class="carousel-control-next" href="#" role="button">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Suivant</span>
-                                </a>
+                                @if ($service['last_ticket'] != null)
+                                    <a class="carousel-control-prev" href="{{url('admin/next/absent/'.$service['last_ticket']->id)}}" role="button">
+                                        <span class="visually-show">Absent</span>
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    </a>
+                                    <a class="carousel-control-next" href="{{url('admin/next/do/'.$service['last_ticket']->id)}}" role="button">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-show">Traité</span>
+                                    </a>
+                                @endif
                             </div>
                         </div>
                     </div>

@@ -17,6 +17,7 @@ class CreateTickets extends Migration
             $table->id();
             $table->string('numero');
             $table->string('nbre_ticket_avant');
+            $table->string('note')->nullable();
             $table->string('status');
             $table->foreignId('service_id');
             $table->foreignId('structure_id');

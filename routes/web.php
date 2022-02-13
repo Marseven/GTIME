@@ -40,7 +40,9 @@ Route::post('/contact', [WelcomeController::class, 'contact'])->name('contact');
 
 //form contact classic
 Route::get('/rating/{ticket}', [NoteController::class, 'index'])->name('rating');
-Route::post('/rating/{ticket}', [NoteController::class, 'add'])->name('rating');
+Route::post('/rating/{ticket}', [NoteController::class, 'create'])->name('rating');
+
+Route::get('/thanks', [NoteController::class, 'thanks'])->name('thanks');
 
 //form contact classic
 Route::get('/print/{service}', [TicketController::class, 'print'])->name('ticket');
@@ -104,6 +106,7 @@ Route::prefix('admin')->namespace('Admin')->middleware('admin')->group(function 
 
     Route::get('/dashboard', [AdminController::class, 'index'])->name('admin-dashboard');
     Route::get('/agent', [TicketController::class, 'agent'])->name('admin-agent');
+    Route::get('/next/{action}/{ticket}', [TicketController::class, 'next']);
 
     //Admin
     Route::get('/list-tickets/{day}', [AdminController::class, 'listTickets'])->name('admin-list-tickets');

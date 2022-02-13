@@ -143,7 +143,7 @@
                             <div class="col-6">
                                 <h6 class="text-uppercase fs-5 ls-2">Note
                                 </h6>
-                                <p class="mb-0">{{ $note->note }}</p>
+                                <p class="mb-0">{{ $note->note }} Étoile(s)</p>
                             </div>
                             <div class="col-6">
                                 <h6 class="text-uppercase fs-5 ls-2">Commentaire

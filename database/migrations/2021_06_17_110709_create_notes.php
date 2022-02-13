@@ -20,7 +20,7 @@ class CreateNotes extends Migration
             $table->string('status');
             $table->foreignId('service_id')->nullable();
             $table->foreignId('ticket_id')->nullable();
-            $table->foreignId('strucutre_id')->nullable();
+            $table->foreignId('structure_id')->nullable();
             $table->foreignId('user_id')->nullable();
             $table->timestamps();
         });
