@@ -17,7 +17,7 @@ class WelcomeController extends Controller
     {
 
         if ($structure) {
-            $services = Service::all()->where('structure_id', $structure->id)->orderBy('position', 'asc');
+            $services = Service::all()->where('structure_id', $structure->id)->sortBy('position', 'asc');
             return view('welcome', ['structure' => $structure, 'services' => $services]);
         } else {
             $services = [];

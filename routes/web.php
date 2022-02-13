@@ -31,6 +31,7 @@ use Illuminate\Support\Facades\Auth;
 
 //home
 Route::get('/', [WelcomeController::class, 'index'])->name('home');
+Route::get('/{structure}', [WelcomeController::class, 'index']);
 Route::get('/home', [WelcomeController::class, 'index']);
 
 //form contact classic
@@ -111,18 +112,13 @@ Route::prefix('admin')->namespace('Admin')->middleware('admin')->group(function 
     Route::get('/list-notes/{day}', [AdminController::class, 'listNotes'])->name('admin-list-notes');
 
     //Service
-    Route::get('/service', [AdminController::class, 'add'])->name('admin-service');
     Route::post('/service', [ServiceController::class, 'create']);
 
-    Route::get('/service/{service}', [ServiceController::class, 'edit']);
     Route::post('/service/{service}', [ServiceController::class, 'update']);
 
     //Structure
-    Route::get('/structure', [StructureController::class, 'add'])->name('admin-structure');
-    Route::post('/struture', [StructureController::class, 'create']);
-
-    Route::get('/struture/{struture}', [StructureController::class, 'edit']);
-    Route::post('/struture/{struture}', [StructureController::class, 'update']);
+    Route::post('/structure', [StructureController::class, 'create']);
+    Route::post('/structure/{struture}', [StructureController::class, 'update']);
 
 
     //user

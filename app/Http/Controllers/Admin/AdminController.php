@@ -53,7 +53,8 @@ class AdminController extends Controller
     {
         Controller::he_can('Services', 'look');
         $services = Service::all();
-        return view('admin.services.list', ['services' => $services,]);
+        $structures = Struture::all();
+        return view('admin.services.list', ['services' => $services, 'structures' => $structures,]);
     }
 
     public function listTickets($day = null)

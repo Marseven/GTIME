@@ -209,12 +209,12 @@
 
                         <div class="mb-3 row">
                             <label for="email" class="col-sm-4 col-form-label
-                form-label">Rôle</label>
+                form-label">Structure</label>
                             <div class="col-md-8 col-12">
                                 <select id="selectOne" class="form-control" name="structure_id">
                                     <option value="null">--</option>
                                     @foreach ($structures as $structure)
-                                        <option value="{{ $structure->id }}">{{ $structure->name }}</option>
+                                        <option value="{{ $structure->id }}">{{ $structure->libelle }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -295,12 +295,12 @@
                             <div class="mb-3 row">
                                 <label for="email"
                                     class="col-sm-4 col-form-label
-                    form-label">Rôle</label>
+                    form-label">Structure</label>
                                 <div class="col-md-8 col-12">
                                     <select id="selectOne" class="form-control" name="structure_id">
                                         <option value="null">--</option>
                                         @foreach ($structures as $structure)
-                                            <option value="{{ $structure->id }}">{{ $structure->name }}</option>
+                                            <option value="{{ $structure->id }}">{{ $structure->libelle }}</option>
                                         @endforeach
                                     </select>
                                 </div>

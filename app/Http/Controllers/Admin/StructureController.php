@@ -25,7 +25,7 @@ class StructureController extends Controller
 
         if ($structure->save()) {
 
-            return redirect('admin/list-structure')->with('success', "La structure a bien été créée !");
+            return redirect('admin/list-structures')->with('success', "La structure a bien été créée !");
         } else {
 
             return back()->with('error', "Une erreur s'est produite.");

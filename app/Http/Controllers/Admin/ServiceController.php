@@ -18,13 +18,13 @@ class ServiceController extends Controller
 
         $service->libelle = $request->libelle;
         $service->description = $request->description;
-        $service->email = $request->position;
+        $service->position = $request->position;
         $service->status = $request->status;
+        $service->structure_id = $request->structure_id;
         $service->user_id = auth()->user()->id;
 
         if ($service->save()) {
-
-            return redirect('admin/list-structure')->with('success', "Le service a bien été créée !");
+            return redirect('admin/list-services')->with('success', "Le service a bien été créée !");
         } else {
 
             return back()->with('error', "Une erreur s'est produite.");
@@ -44,10 +44,11 @@ class ServiceController extends Controller
         } else {
             $service->libelle = $request->libelle;
             $service->description = $request->description;
-            $service->email = $request->position;
+            $service->position = $request->position;
+            $service->structure_id = $request->structure_id;
             $service->status = $request->status;
             if ($service->save()) {
-                return redirect('admin/list-cards')->with('success', "Le service a bien été mis à jour !");
+                return redirect('admin/list-services')->with('success', "Le service a bien été mis à jour !");
             } else {
                 return back()->with('error', "Une erreur s'est produite.");
             }

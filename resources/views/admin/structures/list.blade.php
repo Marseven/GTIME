@@ -73,23 +73,21 @@
                                                                 $status = App\Http\Controllers\Controller::status($structure->status);
                                                             @endphp
                                                             <td><span
-                                                                    class="badge badge-{{ $status['type'] }}">{{ $status['message'] }}
+                                                                    class="badge bg-{{ $status['type'] }}">{{ $status['message'] }}</span>
                                                             </td>
                                                             <td>
                                                                 <button type="button" class="btn btn-info"
                                                                     data-bs-toggle="modal"
                                                                     data-bs-target="#cardModalView{{ $structure->id }}"><i
-                                                                        data-feather="eye"
-                                                                        class="icon-sm me-2"></i></button>
+                                                                        class="bi bi-eye"></i></button>
                                                                 <button type="button" class="btn btn-primary"
                                                                     data-bs-toggle="modal"
                                                                     data-bs-target="#cardModal{{ $structure->id }}"><i
-                                                                        data-feather="edit"
-                                                                        class="icon-sm me-2"></i></button>
+                                                                        class="bi bi-pencil-square"></i></button>
                                                                 <button type="button" class="btn btn-danger"
                                                                     data-bs-toggle="modal"
                                                                     data-bs-target="#cardModalCenter{{ $structure->id }}">
-                                                                    <i data-feather="trash-2" class="icon-sm me-2"></i>
+                                                                    <i class="bi bi-trash"></i>
                                                                 </button>
                                                             </td>
                                                         </tr>
@@ -119,12 +117,12 @@
                         <i data-feather="x"></i>
                     </button>
                 </div>
-                <form action="{{ url('admin/structures') }}" method="POST">
+                <form action="{{ url('admin/structure') }}" method="POST">
                     @csrf
                     <div class="modal-body">
                         <div class="mb-3">
                             <label for="recipient-name" class="col-form-label">Nom</label>
-                            <input type="text" class="form-control" name="town" required>
+                            <input type="text" class="form-control" name="libelle" required>
                         </div>
                         <div class="mb-3">
                             <label for="recipient-name" class="col-form-label">Description </label>
@@ -156,7 +154,7 @@
                             <i class="bx bx-x d-block d-sm-none"></i>
                             <span class="d-none d-sm-block">Fermé</span>
                         </button>
-                        <button type="submit" class="btn btn-primary ml-1" data-bs-dismiss="modal">
+                        <button type="submit" class="btn btn-primary ml-1">
                             <i class="bx bx-check d-block d-sm-none"></i>
                             <span class="d-none d-sm-block">Enregistrer</span>
                         </button>
@@ -177,12 +175,12 @@
                             <i data-feather="x"></i>
                         </button>
                     </div>
-                    <form action="{{ url('admin/structures/' . $structure->id) }}" method="POST">
+                    <form action="{{ url('admin/structure/' . $structure->id) }}" method="POST">
                         @csrf
                         <div class="modal-body">
                             <div class="mb-3">
                                 <label for="recipient-name" class="col-form-label">Nom</label>
-                                <input type="text" class="form-control" name="town" required>
+                                <input type="text" class="form-control" name="libelle" required>
                             </div>
                             <div class="mb-3">
                                 <label for="recipient-name" class="col-form-label">Description </label>
@@ -214,7 +212,7 @@
                                 <i class="bx bx-x d-block d-sm-none"></i>
                                 <span class="d-none d-sm-block">Fermé</span>
                             </button>
-                            <button type="submit" class="btn btn-primary ml-1" data-bs-dismiss="modal">
+                            <button type="submit" class="btn btn-primary ml-1">
                                 <i class="bx bx-check d-block d-sm-none"></i>
                                 <span class="d-none d-sm-block">Enregistrer</span>
                             </button>
@@ -302,9 +300,9 @@
                         <form method="POST" action="{{ url('admin/structures/' . $structure->id) }}">
                             @csrf
                             <input type="hidden" name="delete" value="true">
-                            <button type="submit" class="btn btn-danger ml-1" data-bs-dismiss="modal">
+                            <button type="submit" class="btn btn-danger ml-1">
                                 <i class="bi bi-trash d-block d-sm-none"></i>
-                                <span class="d-none d-sm-block">Enregistrer</span>
+                                <span class="d-none d-sm-block">Supprimer</span>
                             </button>
                         </form>
                     </div>
