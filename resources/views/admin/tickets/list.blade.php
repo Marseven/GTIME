@@ -139,11 +139,14 @@
                                 <h6 class="text-uppercase fs-5 ls-2">Service </h6>
                                 <p class="mb-0">{{ $ticket->service->libelle }}</p>
                             </div>
-                            <div class="col-6">
-                                <h6 class="text-uppercase fs-5 ls-2">Agent
-                                </h6>
-                                <p class="mb-0">{{ $ticket->user->name }}</p>
-                            </div>
+                            @if ($ticket->user)
+                                <div class="col-6">
+                                    <h6 class="text-uppercase fs-5 ls-2">Agent
+                                    </h6>
+                                    <p class="mb-0">{{ $ticket->user->name }}</p>
+                                </div>
+                            @endif
+
                             <div class="col-6 mb-5">
                                 <h6 class="text-uppercase fs-5 ls-2">Ticket </h6>
                                 <p class="mb-0">{{ $ticket->numero }}</p>
