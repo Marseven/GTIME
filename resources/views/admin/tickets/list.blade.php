@@ -7,8 +7,6 @@
 @endpush
 
 @section('content')
-
-
     <div class="page-heading">
         <div class="page-title">
             <div class="row">
@@ -124,6 +122,9 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
+                    @php
+                        $ticket->load(['structure', 'service', 'user']);
+                    @endphp
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-12 mb-5">
@@ -171,11 +172,9 @@
             </div>
         </div>
     @endforeach
-
 @endsection
 
 @push('scripts')
-
     <script src="{{ asset('vendors/simple-datatables/simple-datatables.js') }}"></script>
     <script>
         // Simple Datatable
@@ -195,5 +194,4 @@
             });
         });
     </script>
-
 @endpush
