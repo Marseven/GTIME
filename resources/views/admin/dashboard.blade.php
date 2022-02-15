@@ -1,15 +1,12 @@
 @extends('layouts.admin')
 
 @push('styles')
-
     <link rel="stylesheet" href="{{ asset('vendors/iconly/bold.css') }}">
     <link rel="stylesheet" href="{{ asset('vendors/dripicons/webfont.css') }}">
     <link rel="stylesheet" href="{{ asset('css/pages/dripicons.css') }}">
-
 @endpush
 
 @section('content')
-
     <div class="page-heading">
         <h3>Tableau de Bord</h3>
     </div>
@@ -114,11 +111,9 @@
             </div>
         </section>
     </div>
-
 @endsection
 
 @push('scripts')
-
     <script src="{{ asset('vendors/apexcharts/apexcharts.js') }}"></script>
     <script>
         var optionsProfileVisit = {
@@ -146,7 +141,7 @@
             },
         }
         let optionsVisitorsProfile = {
-            series: [70, 30],
+            series: [{{ $happy }}, {{ $unhappy }}],
             labels: ['Satisfait', 'Mécontent'],
             colors: ['#435ebe', '#55c6e8'],
             chart: {
@@ -173,5 +168,4 @@
         chartVisitorsProfile.render();
     </script>
     <script src="{{ asset('js/pages/dashboard.js') }}"></script>
-
 @endpush

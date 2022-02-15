@@ -21,11 +21,31 @@ class AdminController extends Controller
             $tickets = Ticket::all()->count();
             $notes = Note::all()->count();
 
+            $notes_all = Note::all();
+
+            $happy = 0;
+            $unhappy = 0;
+
+            if ($notes > 0) {
+                foreach ($notes_all as $note) {
+                    if ($note->note >= 3) {
+                        $happy++;
+                    } else {
+                        $unhappy++;
+                    }
+                }
+
+                $happy = ($happy / $notes) * 100;
+                $unhappy = ($unhappy / $notes) * 100;
+            }
+
             return view('admin.dashboard', [
                 'structures' => $structures,
                 'services' => $services,
                 'tickets' => $tickets,
                 'notes' => $notes,
+                'happy' => $happy,
+                'unhappy' => $unhappy,
             ]);
         } else {
             $structures = Struture::all()->where('structure_id', Auth::user()->structure_id)->count();
@@ -33,11 +53,31 @@ class AdminController extends Controller
             $tickets = Ticket::all()->where('structure_id', Auth::user()->structure_id)->count();
             $notes = Note::all()->where('structure_id', Auth::user()->structure_id)->count();
 
+            $notes_all = Note::all()->where('structure_id', Auth::user()->structure_id);
+
+            $happy = 0;
+            $unhappy = 0;
+
+            if ($notes > 0) {
+                foreach ($notes_all as $note) {
+                    if ($note->note >= 3) {
+                        $happy++;
+                    } else {
+                        $unhappy++;
+                    }
+                }
+
+                $happy = ($happy / $notes) * 100;
+                $unhappy = ($unhappy / $notes) * 100;
+            }
+
             return view('admin.dashboard', [
                 'structures' => $structures,
                 'services' => $services,
                 'tickets' => $tickets,
                 'notes' => $notes,
+                'happy' => $happy,
+                'unhappy' => $unhappy,
             ]);
         }
     }

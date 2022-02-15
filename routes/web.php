@@ -102,9 +102,8 @@ Route::prefix('admin')->namespace('Admin')->middleware('admin')->group(function 
     Route::post('security-permission/edit/{_id}', [SecurityRoleController::class, 'permission']);
 
 
-    Route::get('/', [AdminController::class, 'index'])->name('admin');
+    Route::get('/dashboard', [AdminController::class, 'index'])->name('admin');
 
-    Route::get('/dashboard', [AdminController::class, 'index'])->name('admin-dashboard');
     Route::get('/agent', [TicketController::class, 'agent'])->name('admin-agent');
     Route::get('/next/{action}/{ticket}', [TicketController::class, 'next']);
 

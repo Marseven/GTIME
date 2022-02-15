@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Swift_TransportException;
 
 class WelcomeController extends Controller
 {
@@ -29,8 +30,7 @@ class WelcomeController extends Controller
     {
         try {
             $result =  Mail::to('mebodoaristide@gmail.com')->queue(new QueryMessage($request->all()));
-        } 
-        catch (Swift_TransportException $e) {
+        } catch (Swift_TransportException $e) {
             echo $e->getMessage();
         }
 
