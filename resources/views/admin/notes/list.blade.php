@@ -7,8 +7,6 @@
 @endpush
 
 @section('content')
-
-
     <div class="page-heading">
         <div class="page-title">
             <div class="row">
@@ -86,8 +84,7 @@
                                                                 <button type="button" class="btn btn-info"
                                                                     data-bs-toggle="modal"
                                                                     data-bs-target="#cardModalView{{ $note->id }}"><i
-                                                                        data-feather="eye"
-                                                                        class="icon-sm me-2"></i></button>
+                                                                        class="bi bi-eye"></i></button>
                                                             </td>
                                                         </tr>
                                                     @endforeach
@@ -131,11 +128,6 @@
                                 <h6 class="text-uppercase fs-5 ls-2">Service </h6>
                                 <p class="mb-0">{{ $note->service->libelle }}</p>
                             </div>
-                            <div class="col-6">
-                                <h6 class="text-uppercase fs-5 ls-2">Agent
-                                </h6>
-                                <p class="mb-0">{{ $note->user->name }}</p>
-                            </div>
                             <div class="col-6 mb-5">
                                 <h6 class="text-uppercase fs-5 ls-2">Ticket </h6>
                                 <p class="mb-0">{{ $note->ticket->numero }}</p>
@@ -162,11 +154,9 @@
             </div>
         </div>
     @endforeach
-
 @endsection
 
 @push('scripts')
-
     <script src="{{ asset('vendors/simple-datatables/simple-datatables.js') }}"></script>
     <script>
         // Simple Datatable
@@ -186,5 +176,4 @@
             });
         });
     </script>
-
 @endpush

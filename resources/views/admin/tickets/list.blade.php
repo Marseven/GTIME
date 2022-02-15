@@ -91,8 +91,7 @@
                                                                 <button type="button" class="btn btn-info"
                                                                     data-bs-toggle="modal"
                                                                     data-bs-target="#cardModalView{{ $ticket->id }}"><i
-                                                                        data-feather="eye"
-                                                                        class="icon-sm me-2"></i></button>
+                                                                        class="bi bi-eye"></i></button>
                                                             </td>
                                                         </tr>
                                                     @endforeach
