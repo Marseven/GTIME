@@ -70,7 +70,7 @@
                                     <a href="{{ url('admin/list-notes/' . $today) }}">Notes</a>
                                 </li>
                                 <li class="submenu-item ">
-                                    <a href="{{ url('admin/') }}">Rapports</a>
+                                    <a href="{{ route('admin') }}">Rapports</a>
                                 </li>
                             </ul>
                         </li>
