@@ -170,7 +170,7 @@
     </div>
 
     @foreach ($services as $service)
-        <div class="modal fade text-left" id="inlineForm{{ $service->id }}" tabindex="-1" role="dialog"
+        <div class="modal fade text-left" id="cardModal{{ $service->id }}" tabindex="-1" role="dialog"
             aria-labelledby="myModalLabel33" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
                 <div class="modal-content">
@@ -314,12 +314,10 @@
 @endsection
 
 @push('scripts')
-
     <script src="{{ asset('vendors/simple-datatables/simple-datatables.js') }}"></script>
     <script>
         // Simple Datatable
         let table1 = document.querySelector('#gt_datatable');
         let dataTable = new simpleDatatables.DataTable(table1);
     </script>
-
 @endpush
