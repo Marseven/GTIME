@@ -182,23 +182,28 @@
                         <div class="modal-body">
                             <div class="mb-3">
                                 <label for="recipient-name" class="col-form-label">Nom</label>
-                                <input type="text" class="form-control" name="libelle" required>
+                                <input value="{{ $structure->libelle }}" type="text" class="form-control"
+                                    name="libelle" required>
                             </div>
                             <div class="mb-3">
                                 <label for="recipient-name" class="col-form-label">Description </label>
-                                <textarea class="form-control" name="description" required></textarea>
+                                <textarea value="{{ $structure->description }}" class="form-control" name="description"
+                                    required></textarea>
                             </div>
                             <div class="mb-3">
                                 <label for="recipient-name" class="col-form-label">Responsable</label>
-                                <input type="text" class="form-control" name="responsable" required>
+                                <input value="{{ $structure->responsable }}" type="text" class="form-control"
+                                    name="responsable" required>
                             </div>
                             <div class="mb-3">
                                 <label for="recipient-name" class="col-form-label">Email</label>
-                                <input type="text" class="form-control" name="email" required>
+                                <input value="{{ $structure->email }}" type="text" class="form-control" name="email"
+                                    required>
                             </div>
                             <div class="mb-3">
                                 <label for="recipient-name" class="col-form-label">Télphone</label>
-                                <input type="text" class="form-control" name="telephone" required>
+                                <input type="text" value="{{ $structure->telephone }}" class="form-control"
+                                    name="telephone" required>
                             </div>
                             <div class="mb-3">
                                 <label for="recipient-name" class="col-form-label">Statut</label>

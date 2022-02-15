@@ -185,15 +185,18 @@
                         <div class="modal-body">
                             <div class="mb-3">
                                 <label for="recipient-name" class="col-form-label">Nom</label>
-                                <input type="text" class="form-control" name="libelle" required>
+                                <input value="{{ $service->libelle }}" type="text" class="form-control" name="libelle"
+                                    required>
                             </div>
                             <div class="mb-3">
                                 <label for="recipient-name" class="col-form-label">Description </label>
-                                <textarea class="form-control" name="description" required></textarea>
+                                <textarea value="{{ $service->description }}" class="form-control" name="description"
+                                    required></textarea>
                             </div>
                             <div class="mb-3">
                                 <label for="recipient-name" class="col-form-label">Position</label>
-                                <input type="number" class="form-control" name="position" required>
+                                <input type="number" value="{{ $service->position }}" class="form-control"
+                                    name="position" required>
                             </div>
                             @if (Auth::user()->security_role_id == 1)
                                 <div class="mb-3">
