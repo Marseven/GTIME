@@ -159,7 +159,7 @@
                                 <h6 class="text-uppercase fs-5 ls-2">Statut
                                 </h6>
                                 <p class="mb-0">
-                                    <span class="badge badge-{{ $status['type'] }}">{{ $status['message'] }}</span>
+                                    <span class="badge bg-{{ $status['type'] }}">{{ $status['message'] }}</span>
                                 </p>
                             </div>
                         </div>

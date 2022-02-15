@@ -2,7 +2,6 @@
 
 
 @section('content')
-
     <!-- Container fluid -->
     <div class="container-fluid px-6 py-4">
         <div class="row">
@@ -21,8 +20,8 @@
             <div class="col-xl-12 col-lg-12 col-md-12 col-12">
                 <!-- Bg -->
                 <div class="pt-20 rounded-top" style="background:
-                                                        url({{ asset('images/bg/profile-cover.jpg') }}) no-repeat;
-                                                        background-size: cover;">
+                                                                        url({{ asset('images/bg/profile-cover.jpg') }}) no-repeat;
+                                                                        background-size: cover;">
                 </div>
                 <div class="bg-white rounded-bottom smooth-shadow-sm ">
                     <div class="d-flex align-items-center justify-content-between
@@ -121,15 +120,17 @@
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabelOne">Mettre à jour</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="{{ url('/admin-user/' . $user->id) }}" method="POST">
-                        @csrf
+                <form action="{{ url('/admin-user/' . $user->id) }}" method="POST">
+                    @csrf
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabelOne">Mettre à jour</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+
                         <div class="mb-3">
                             <label for="firstname" class="col-form-label">Nom Complet</label>
                             <input type="text" class="form-control" name="name" value="{{ $user->name }}">
@@ -138,21 +139,21 @@
                             <label for="email" class="col-form-label">Email</label>
                             <input type="email" class="form-control" name="email" value="{{ $user->email }}">
                         </div>
-                </div>
-                <div class="mb-3">
-                    <label for="email" class="col-form-label">Téléphone</label>
-                    <input type="email" class="form-control" name="email" value="{{ $user->phone }}">
-                </div>
+                        <div class="mb-3">
+                            <label for="email" class="col-form-label">Téléphone</label>
+                            <input type="email" class="form-control" name="email" value="{{ $user->phone }}">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermé</button>
+                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                    </div>
+                </form>
             </div>
         </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermé</button>
-            <button type="submit" class="btn btn-primary">Enregistrer</button>
-        </div>
-        </form>
     </div>
-    </div>
-    </div>
+
+
 
     <div class="modal fade" id="passwordModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelOne"
         aria-hidden="true">
@@ -188,5 +189,4 @@
             </div>
         </div>
     </div>
-
 @endsection
