@@ -35,7 +35,7 @@
             <button type="submit" class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Connexion</button>
         </form>
         <div class="text-center mt-5 text-lg fs-4">
-            <p><a class="font-bold" href="{{ route('password.request') }}">Mot de passe Oublié ?</a>.</p>
+            <p><a class="font-bold" href="{{ route('password.request') }}">Mot de passe Oublié ?</a></p>
         </div>
     </div>
 @endsection

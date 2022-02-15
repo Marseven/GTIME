@@ -15,10 +15,10 @@ class CreateTickets extends Migration
     {
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
-            $table->string('numero');
-            $table->string('nbre_ticket_avant');
-            $table->string('note')->nullable();
-            $table->string('status');
+            $table->int('numero');
+            $table->int('nbre_ticket_avant');
+            $table->int('note')->nullable();
+            $table->int('status');
             $table->foreignId('service_id');
             $table->foreignId('structure_id');
             $table->foreignId('user_id')->nullable();

@@ -64,7 +64,7 @@
                                                         <tr>
                                                             <td>{{ $structure->id }}</td>
                                                             <td>
-                                                                <a href="{{ url('/' . $structure->id) }}">
+                                                                <a target="_blank" href="{{ url('/' . $structure->id) }}">
                                                                     {{ $structure->libelle }}
                                                                 </a>
                                                             </td>

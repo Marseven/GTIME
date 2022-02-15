@@ -41,17 +41,15 @@ class TicketController extends Controller
         $ticket = new Ticket();
         $today = (new \DateTime())->setTime(0, 0);
 
-        $nbre_ticket = Ticket::where('created_at', '>', $today->format('Y-m-d H:s:i'))->count();
+        $nbre_ticket = Ticket::where('created_at', '>', $today->format('Y-m-d H:s:i'))->where('status', STATUT_PRINT)->where('service_id', $service->id)->count();
         $service->load(['structure']);
-
 
         if ($nbre_ticket == 0) {
             $ticket->numero = 1;
             $ticket->nbre_ticket_avant = $nbre_ticket;
         } else {
-
-            $ticket_prev = Ticket::where('created_at', '>', $today->format('Y-m-d H:s:i'))->orderBy('created_at', 'desc')->first();
-            $ticket->numero = $ticket_prev->numero++;
+            $ticket_prev = Ticket::where('created_at', '>', $today->format('Y-m-d H:s:i'))->where('status', STATUT_PRINT)->where('service_id', $service->id)->orderBy('created_at', 'desc')->first();
+            $ticket->numero = $ticket_prev->numero + 1;
             $ticket->nbre_ticket_avant = $nbre_ticket;
         }
 

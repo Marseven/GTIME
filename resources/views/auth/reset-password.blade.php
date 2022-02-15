@@ -1,8 +1,6 @@
 @extends('layouts.login')
 
 @section('content')
-
-
     <div id="auth-left">
         <div class="auth-logo">
             <a href="{{ route('home') }}"><img style="height: 2em;" src="{{ asset('images/logo/logo.png') }}" alt="Logo"
@@ -51,9 +49,8 @@
         </form>
         <div class="text-center mt-5 text-lg fs-4">
             <p class='text-gray-600'>Vous avez un compte ? <a href="{{ route('login') }}" class="font-bold">Se
-                    Connecter/a>.
+                    Connecter</a>.
             </p>
         </div>
     </div>
-
 @endsection
