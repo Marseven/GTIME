@@ -5,8 +5,6 @@
 @endpush
 
 @section('content')
-
-
     <div class="page-heading">
         <div class="page-title">
             <div class="row">
@@ -65,7 +63,11 @@
                                                     @foreach ($structures as $structure)
                                                         <tr>
                                                             <td>{{ $structure->id }}</td>
-                                                            <td>{{ $structure->libelle }}</td>
+                                                            <td>
+                                                                <a href="{{ url('/' . $structure->id) }}">
+                                                                    {{ $structure->libelle }}
+                                                                </a>
+                                                            </td>
                                                             <td>{{ $structure->responsable }}</td>
                                                             <td>{{ $structure->telephone }}</td>
                                                             <td>{{ $structure->email }}</td>
@@ -310,16 +312,13 @@
             </div>
         </div>
     @endforeach
-
 @endsection
 
 @push('scripts')
-
     <script src="{{ asset('vendors/simple-datatables/simple-datatables.js') }}"></script>
     <script>
         // Simple Datatable
         let table1 = document.querySelector('#gt_datatable');
         let dataTable = new simpleDatatables.DataTable(table1);
     </script>
-
 @endpush
