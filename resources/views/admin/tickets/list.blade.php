@@ -85,7 +85,7 @@
                                                                 $status = App\Http\Controllers\Controller::status($ticket->status);
                                                             @endphp
                                                             <td><span
-                                                                    class="badge badge-{{ $status['type'] }}">{{ $status['message'] }}</span>
+                                                                    class="badge bg-{{ $status['type'] }}">{{ $status['message'] }}</span>
                                                             </td>
                                                             <td>
                                                                 <button type="button" class="btn btn-info"
