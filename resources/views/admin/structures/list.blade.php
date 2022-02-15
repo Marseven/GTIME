@@ -187,8 +187,8 @@
                             </div>
                             <div class="mb-3">
                                 <label for="recipient-name" class="col-form-label">Description </label>
-                                <textarea value="{{ $structure->description }}" class="form-control" name="description"
-                                    required></textarea>
+                                <textarea class="form-control" name="description"
+                                    required>{{ $structure->description }}</textarea>
                             </div>
                             <div class="mb-3">
                                 <label for="recipient-name" class="col-form-label">Responsable</label>

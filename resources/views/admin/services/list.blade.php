@@ -190,8 +190,8 @@
                             </div>
                             <div class="mb-3">
                                 <label for="recipient-name" class="col-form-label">Description </label>
-                                <textarea value="{{ $service->description }}" class="form-control" name="description"
-                                    required></textarea>
+                                <textarea class="form-control" name="description"
+                                    required>{{ $service->description }}</textarea>
                             </div>
                             <div class="mb-3">
                                 <label for="recipient-name" class="col-form-label">Position</label>
