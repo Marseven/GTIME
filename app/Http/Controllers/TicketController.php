@@ -17,38 +17,40 @@ class TicketController extends Controller
 
     public function index(Ticket $ticket)
     {
-        if($ticket->status == STATUT_PRINT){
+        if ($ticket->status == STATUT_PRINT) {
+            $today = (new \DateTime())->setTime(0, 0);
             $day = new \DateTime($ticket->created_at);
-            $ticket_pending = Ticket::where('created_at', $day->format('Y-m-d'))->where('structure_id',$ticket->structure_id)->where('status', STATUT_PRINT)->orderBy('created_at', 'desc')->first();
+            $ticket_pending = Ticket::where('created_at', '>', $today->format('Y-m-d H:s:i'))->where('structure_id', $ticket->structure_id)->where('status', STATUT_PRINT)->orderBy('created_at', 'desc')->first();
             $heure = $day->format('H : s');
-            $ticket_restant = Ticket::where('created_at', $day->format('Y-m-d'))->where('structure_id',$ticket->structure_id)->where('status', STATUT_PRINT)->orderBy('created_at', 'desc')->count();
-           
+            $ticket_restant = Ticket::where('created_at', '>', $today->format('Y-m-d H:s:i'))->where('structure_id', $ticket->structure_id)->where('status', STATUT_PRINT)->orderBy('created_at', 'desc')->count();
+
             return view('tickets.view', [
                 'ticket' => $ticket,
                 'ticket_pending' => $ticket_pending,
                 'ticket_restant' => $ticket_restant,
                 'heure' => $heure,
             ]);
-        }else{
+        } else {
             return redirect('rating/' . $ticket->id);
         }
-       
     }
 
     public function print(Service $service)
     {
 
         $ticket = new Ticket();
+        $today = (new \DateTime())->setTime(0, 0);
 
-        $nbre_ticket = Ticket::where('created_at', date('Y-m-d'))->count();
+        $nbre_ticket = Ticket::where('created_at', '>', $today->format('Y-m-d H:s:i'))->count();
         $service->load(['structure']);
+
 
         if ($nbre_ticket == 0) {
             $ticket->numero = 1;
             $ticket->nbre_ticket_avant = $nbre_ticket;
         } else {
 
-            $ticket_prev = Ticket::where('created_at', date('Y-m-d'))->orderBy('created_at', 'desc')->first();
+            $ticket_prev = Ticket::where('created_at', '>', $today->format('Y-m-d H:s:i'))->orderBy('created_at', 'desc')->first();
             $ticket->numero = $ticket_prev->numero++;
             $ticket->nbre_ticket_avant = $nbre_ticket;
         }
@@ -68,9 +70,9 @@ class TicketController extends Controller
         $list_service = [];
         $i = 0;
         foreach ($services as $service) {
-            $today = (new \DateTime())->setTime(0,0);
-            $last_ticket = Ticket::where('created_at', '>' , $today->format('Y-m-d H:s:i'))->where('status', STATUT_PRINT)->where('service_id', $service->id)->orderBy('created_at', 'desc')->first();
-           
+            $today = (new \DateTime())->setTime(0, 0);
+            $last_ticket = Ticket::where('created_at', '>', $today->format('Y-m-d H:s:i'))->where('status', STATUT_PRINT)->where('service_id', $service->id)->orderBy('created_at', 'desc')->first();
+
             $list_service[$i]['service'] = $service;
             $list_service[$i]['last_ticket'] = $last_ticket;
         }
@@ -80,13 +82,13 @@ class TicketController extends Controller
 
     public function next($action, Ticket $ticket)
     {
-        if($action == "do"){
+        if ($action == "do") {
             $ticket->status = STATUT_DO;
             $ticket->user_id = Auth::user()->id;
             $ticket->save();
 
             return redirect('admin/agent/')->with('success', "Ticket Archivé");
-        }elseif($action == "absent"){
+        } elseif ($action == "absent") {
             $ticket->status = STATUT_ABSENT;
             $ticket->user_id = Auth::user()->id;
             $ticket->save();
