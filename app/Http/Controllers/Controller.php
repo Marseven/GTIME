@@ -138,12 +138,6 @@ class Controller extends BaseController
                 $message['type'] = "danger";
                 $message['message'] = "Refusée";
                 return $message;
-                break;
-            case STATUT_CANCEL:
-                $message['type'] = "danger";
-                $message['message'] = "Annulée";
-                return $message;
-                break;
             case STATUT_PAID:
                 $message['type'] = "success";
                 $message['message'] = "Payée";
@@ -178,7 +172,6 @@ class Controller extends BaseController
         print '<option value="' . STATUT_PENDING . '">En cours de traitement</option>';
         print '<option value="' . STATUT_APPROVE . '">Appouvé</option>';
         print '<option value="' . STATUT_REFUSED . '">Refusé</option>';
-        print '<option value="' . STATUT_CANCEL . '">Annulé</option>';
     }
 
     static function card_status()
@@ -192,7 +185,6 @@ class Controller extends BaseController
         print '<option value="' . STATUT_PRINT . '">Imprimé</option>';
         print '<option value="' . STATUT_PENDING . '">En cours de traitement</option>';
         print '<option value="' . STATUT_DO . '">Traité</option>';
-        print '<option value="' . STATUT_CANCEL . '">Annulé</option>';
     }
 
     static function he_can($controller, $action)
