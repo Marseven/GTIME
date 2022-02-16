@@ -74,6 +74,9 @@
                                                 </thead>
                                                 <tbody>
                                                     @foreach ($notes as $note)
+                                                        @php
+                                                            $note->load(['ticket']);
+                                                        @endphp
                                                         <tr>
                                                             <td>{{ $note->id }}</td>
                                                             <td>{{ $note->structure->libelle }}</td>
