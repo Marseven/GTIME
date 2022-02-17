@@ -133,7 +133,10 @@
             plotOptions: {},
             series: [{
                 name: 'Tickets',
-                data: [9, 20, 30, 20, 10, 20, 30, 20, 10, 20, 30, 20]
+                data: [{{ $jan }}, {{ $fev }}, {{ $mar }}, {{ $avr }},
+                    {{ $mai }}, {{ $jui }}, {{ $jul }}, {{ $aou }},
+                    {{ $sep }}, {{ $oct }}, {{ $nov }}, {{ $dec }}
+                ]
             }],
             colors: '#435ebe',
             xaxis: {

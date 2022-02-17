@@ -51,6 +51,6 @@ class ExportController extends Controller
 
         $pdf = PDF::loadView('tickets.ticket-pdf', $data)->setPaper('a5', 'portrait');
 
-        return $pdf->download('Ticket-' . $ticket->id . '.pdf');
+        return $pdf->download('Ticket-' . $ticket->numero . '.pdf');
     }
 }

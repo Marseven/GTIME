@@ -39,6 +39,66 @@ class AdminController extends Controller
                 $unhappy = ($unhappy / $notes) * 100;
             }
 
+            $jan = 0;
+            $fev = 0;
+            $mar = 0;
+            $avr = 0;
+            $mai = 0;
+            $jui = 0;
+            $jul = 0;
+            $aou = 0;
+            $sep = 0;
+            $oct = 0;
+            $nov = 0;
+            $dec = 0;
+
+            $tickets_all = Ticket::all();
+
+            foreach ($tickets_all as $ticket) {
+                $date = new \DateTime($ticket->created_at);
+                $mois = $date->format('m');
+                (int)$mois;
+                switch ($mois) {
+                    case 1:
+                        $jan++;
+                        break;
+                    case 2:
+                        $fev++;
+                        break;
+                    case 3:
+                        $mar++;
+                        break;
+                    case 4:
+                        $avr++;
+                        break;
+                    case 5:
+                        $mai++;
+                        break;
+                    case 6:
+                        $jui++;
+                        break;
+                    case 7:
+                        $jul++;
+                        break;
+                    case 8:
+                        $aou++;
+                        break;
+                    case 9:
+                        $sep++;
+                        break;
+                    case 10:
+                        $oct++;
+                        break;
+                    case 11:
+                        $nov++;
+                        break;
+                    case 12:
+                        $dec++;
+                        break;
+                }
+            }
+
+
             return view('admin.dashboard', [
                 'structures' => $structures,
                 'services' => $services,
@@ -46,6 +106,18 @@ class AdminController extends Controller
                 'notes' => $notes,
                 'happy' => $happy,
                 'unhappy' => $unhappy,
+                'jan' => $jan,
+                'fev' => $fev,
+                'mar' => $mar,
+                'avr' => $avr,
+                'mai' => $mai,
+                'jui' => $jui,
+                'jul' => $jul,
+                'aou' => $aou,
+                'sep' => $sep,
+                'oct' => $oct,
+                'nov' => $nov,
+                'dec' => $dec,
             ]);
         } else {
             $structures = Struture::all()->where('structure_id', Auth::user()->structure_id)->count();
