@@ -15,26 +15,31 @@ class NoteController extends Controller
 
     public function index(Ticket $ticket)
     {
-        if($ticket->status != STATUT_PRINT){
-            if($ticket->note != 1){
+        if ($ticket->status != STATUT_PRINT) {
+            if ($ticket->note != 1) {
                 return view(
                     'notes.add',
                     [
                         'ticket' => $ticket,
                     ]
                 );
-            }else{
-                return redirect('/thanks')->with('success', 'Merci pour votre contribution !');
+            } else {
+                return view(
+                    'notes.add',
+                    [
+                        'status' => $ticket->note,
+                        'ticket' => $ticket,
+                    ]
+                );
             }
-        }else{
+        } else {
             return redirect('view/' . $ticket->id);
         }
-        
     }
 
     public function create(Request $request, Ticket $ticket)
     {
-        if($ticket->note != 1){
+        if ($ticket->note != 1) {
             $note = new Note();
 
             $note->note = $request->note;
@@ -52,15 +57,13 @@ class NoteController extends Controller
             } else {
                 return back()->with('error', "Une erreur s'est produite.");
             }
-        }else{
+        } else {
             return redirect('/thanks')->with('success', 'Merci pour votre contribution !');
         }
-        
     }
 
-    public function thanks(){
-        return view(
-            'notes.thanks'
-        );
+    public function thanks()
+    {
+        return view('notes.thanks');
     }
 }

@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- hero section starts
-                                                                                                                                                                                            ================================================== -->
+                                                                                                                                                                                                ================================================== -->
     <section id="home" class="dtr-section">
         <div class="dtr-section bg-white dtr-hero-section-top-padding">
             <div class="container dtr-pb-100">
@@ -35,7 +35,7 @@
                         <!-- button ends -->
 
                     </div>
-                    <div class="col-12 col-md-6 small-device-space"> <img src="{{ asset('front/img/file.jpg') }}"
+                    <div class="col-12 col-md-6 small-device-space"> <img src="{{ asset('front/img/attente.jpg') }}"
                             alt="image">
                     </div>
                 </div>
@@ -44,11 +44,11 @@
         </div>
     </section>
     <!-- hero section ends
-                                                                                                                                                                                            ================================================== -->
+                                                                                                                                                                                                ================================================== -->
 
 
     <!-- services section starts
-                                                                                                                                                                                            ================================================== -->
+                                                                                                                                                                                                ================================================== -->
     <section id="services" class="dtr-section dtr-pt-100 dtr-pb-70 bg-white">
         <div class="container">
 
@@ -95,10 +95,10 @@
         </div>
     </section>
     <!-- services section ends
-                                                                                                                                                                                            ================================================== -->
+                                                                                                                                                                                                ================================================== -->
 
     <!-- contact section starts
-                                                                                                                                                                                            ================================================== -->
+                                                                                                                                                                                                ================================================== -->
     <section id="contact" class="dtr-section dtr-py-100">
         <div class="container">
 
@@ -159,5 +159,5 @@
         </div>
     </section>
     <!-- contact section ends
-                                                                                                                                                                                            ================================================== -->
+                                                                                                                                                                                                ================================================== -->
 @endsection

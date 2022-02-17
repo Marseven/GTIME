@@ -42,7 +42,7 @@ Route::post('/contact', [WelcomeController::class, 'contact'])->name('contact');
 Route::get('/rating/{ticket}', [NoteController::class, 'index'])->name('rating');
 Route::post('/rating/{ticket}', [NoteController::class, 'create'])->name('rating');
 
-Route::get('/thanks', [NoteController::class, 'thanks'])->name('thanks');
+Route::get('/thanks-note', [NoteController::class, 'thanks'])->name('thanks');
 
 //form contact classic
 Route::get('/print/{service}', [TicketController::class, 'print'])->name('ticket');

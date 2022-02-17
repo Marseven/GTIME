@@ -1,14 +1,9 @@
 @component('mail::message')
     <h1>Hello {{ config('app.name') }},</h1>
 
-    <p>
-        {{ $data['message'] }} <br>
+    {{ $data['message'] }}
 
-
-        Cordialment,<br>
-        {{ $data['name'] }} <br>
-        {{ $data['email'] }}
-    </p>
-
-
+    Cordialment,<br>
+    {{ $data['name'] }}
+    {{ $data['email'] }}
 @endcomponent
